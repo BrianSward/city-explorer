@@ -1,18 +1,20 @@
 import React from 'react';
 import axios from 'axios';
-import Card from 'react-bootstrap/Card';
+// import Card from 'react-bootstrap/Card';
 
 class App extends React.Component {
   constructor(props){
     super(props);
       this.state = {
-        city: '',
-        error: false,
-        errorMessage: '',
-        cityMap: '',
-        lon: '',
-        lat: '',
-        location: {}
+        city_name: '',
+        // error: false,
+        // errorMessage: '',
+        // cityMap: '',
+        // lon: '',
+        // lat: '',
+        // location: {}
+        cityData: []
+
       }
 
   }
@@ -20,22 +22,28 @@ class App extends React.Component {
   handleInput = e => {
     e.preventDefault();
     this.setState({
-      city: e.target.value
+      city_name: e.target.value
     })
   }
 
   getCityData = async (e) => {
     e.preventDefault();
     try{
-      let url = `https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.city}&format=json`
+      let url = `${process.env.REACT_APP_SERVER}/weather?city_name=${this.state.city_name}`;
       let cityData = await axios.get(url);
-      let url2 = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${cityData.data[0].lat},${cityData.data[0].lon}&zoom=12&size=500x500&format=jpeg`
       this.setState({
-        city: cityData.data[0].display_name,
-        lon: cityData.data[0].lon,
-        lat: cityData.data[0].lat,
-        mapState: url2      
-      })
+        cityData: cityData
+      });
+      console.log(this.state);
+      // let url = `https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.city}&format=json`
+      // let cityData = await axios.get(url);
+      // let url2 = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${cityData.data[0].lat},${cityData.data[0].lon}&zoom=12&size=500x500&format=jpeg`
+      // this.setState({
+      //   city: cityData.data[0].display_name,
+      //   lon: cityData.data[0].lon,
+      //   lat: cityData.data[0].lat,
+      //   mapState: url2      
+      // })
     } 
     catch(error){
       this.setState({
@@ -50,11 +58,14 @@ class App extends React.Component {
       <div>
         <form>
           <label>Pick a City
-            <input type='text' onChange={this.handleInput} />
+            <input type='text' onInput={this.handleInput} />
           </label>
           <button onClick={this.getCityData} type="submit" as="input" >Explore</button>
         </form>
-        {
+        <div>
+        {/* <p>{this.state.cityData}</p> */}
+        </div>
+        {/* {
           this.state.error
           ?
           <Card style={{ width: '18rem' }}>
@@ -85,7 +96,7 @@ class App extends React.Component {
                 </Card.Text>
               </Card.Body>
           </Card>
-        }
+        } */}
       </div> 
     );
   }
