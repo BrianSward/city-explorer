@@ -12,7 +12,9 @@ class App extends React.Component {
         cityMap: '',
         lon: '',
         lat: '',
-        cityData: {}, 
+        cityData: {},
+        movieData: {},
+     
       }
 
   }
@@ -64,7 +66,7 @@ class App extends React.Component {
   render () {
     // this is a great place to test things on what is coming through!
     // console.log(this.state.cityData.data);
-    console.log(this.state.movieData);
+    // console.log(this.state.movieData);
     return (
       <div>
         <form>
@@ -107,14 +109,14 @@ class App extends React.Component {
                 </>
                 </Card.Text>
                 
-                
+                <Card.Text>
                 {
                 this.state.movieData.data &&
                 this.state.movieData.data.map ((v,i) => 
                   <Card.Text key={i}>{v.name} {v.overview}</Card.Text>
                 )}
                 
-                
+                </Card.Text>
               </Card.Body>
           </Card>
         }
