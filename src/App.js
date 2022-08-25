@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
+import Weather from './components/Weather.js';
+import Movies from './components/Movies.js';
 
 class App extends React.Component {
   constructor(props){
@@ -38,7 +40,7 @@ class App extends React.Component {
         lat: cityData1.data[0].lat,
         mapState: url2      
       })
-      // console.log(cityData1.data[0]);
+     
       const server = process.env.REACT_APP_SERVER;
       let url = `${server}/weather?lat=${cityData1.data[0].lat}&lon=${cityData1.data[0].lon}`;
       let cityData = await axios.get(url);
@@ -64,9 +66,7 @@ class App extends React.Component {
     }
   
   render () {
-    // this is a great place to test things on what is coming through!
-    // console.log(this.state.cityData.data);
-    // console.log(this.state.movieData);
+
     return (
       <div>
         <form>
@@ -75,18 +75,14 @@ class App extends React.Component {
           </label>
           <button onClick={this.getCityData} type="submit" as="input" >Explore</button>
         </form>
-        <div>
-        {/* <p>{this.state.cityData.data.city_name}</p> */}
-        </div>
+    
         {
           this.state.error
           ?
           <Card style={{ width: '18rem' }}>
             <Card.Body>
               <Card.Title>Error!!</Card.Title>
-              {/* <Card.Text>
-                <p>{this.state.errorMessage}</p>
-              </Card.Text> */}
+          
             </Card.Body>
          </Card>
 
@@ -103,19 +99,20 @@ class App extends React.Component {
                 <Card.Title>{this.state.city}</Card.Title>
                 <Card.Text>
                 <>
-                {this.state.cityData.data && this.state.cityData.data.map ((v,i) => 
-                  <p key={i}>{v.date} {v.description}</p>
-                )}
+                <Weather cityData={this.state.cityData}/>
                 </>
                 </Card.Text>
                 
                 <Card.Text>
-                {
+                <>
+                <Movies movieData={this.state.movieData}/> 
+                </>
+                {/* {
                 this.state.movieData.data &&
                 this.state.movieData.data.map ((v,i) => 
                   <Card.Text key={i}>{v.name} {v.overview}</Card.Text>
                 )}
-                
+                 */}
                 </Card.Text>
               </Card.Body>
           </Card>

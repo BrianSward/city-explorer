@@ -33,4 +33,18 @@ Finish time: _____
 
 Actual time needed to complete: _____
 
-![wrrc take one with Sue Young](./public/Screenshot 2022-08-22 145818.png)
+![wrrc take one with Sue Young](./public/Screenshot2022-08-22-145818.png)
+
+![wrrc take one with Alan](./public/wrrctake2.jpg)
+
+![wrrc take one with Xaiver](.public/lab09wrrc4.png)
+
+Name of feature: lab class 09
+
+Estimate of time needed to complete: 6 hours?
+
+Start time: 2 pm
+
+Finish time: 4:20
+
+Actual time needed to complete: 2h 20 mins
