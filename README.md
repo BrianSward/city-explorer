@@ -39,6 +39,8 @@ Actual time needed to complete: _____
 
 ![wrrc take one with Xaiver](.public/lab09wrrc4.png)
 
+![wrrc take one with Solo-dolo](.public/wrrc-take-5.jpg)
+
 Name of feature: lab class 09
 
 Estimate of time needed to complete: 6 hours?
@@ -48,3 +50,13 @@ Start time: 2 pm
 Finish time: 4:20
 
 Actual time needed to complete: 2h 20 mins
+
+Name of feature: lab class 10
+
+Estimate of time needed to complete: 6 hours?
+
+Start time: 4:10
+
+Finish time: 
+
+Actual time needed to complete: 

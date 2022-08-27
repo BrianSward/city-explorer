@@ -8,7 +8,7 @@ class WeatherDay extends React.Component {
       <Card>
         
         {this.props.cityData.data && this.props.cityData.data.map ((v,i) => 
-          <p key={i}>{v.date} {v.description}</p>)}
+          <p key={i}>{v.time} {v.forecast}</p>)}
        
       </Card>
     );
